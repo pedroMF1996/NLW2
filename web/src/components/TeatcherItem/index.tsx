@@ -1,24 +1,47 @@
 import React from 'react';
 import  whatsappIcon  from '../../assets/Downloads Dia 01/images/icons/whatsapp.svg';
 import './style.css';
+import api from '../../services/api';
 
-function TeatcherItem(){
+export interface Teatcher{
+        id: number,
+        subject: string,
+        cost: number,
+        user_id: number,
+        name: string,
+        avatar: string,
+        whatsapp: string,
+        bio: string
+}
+    
+interface TeatcherItemProps{
+    teatcher:Teatcher
+}
+
+const TeatcherItem:React.FC<TeatcherItemProps> = ({teatcher}) => {
+    async function createNewConnection(){
+        await api.post('/connections',{user_id: teatcher.id});
+    }
+
     return (
         <article className="teatcher-item">
         <header>
-            <img src="https://avatars0.githubusercontent.com/u/32961778?s=460&u=106e18d188d6023b7d1efc00240dfe63b4f0cfc9&v=4" alt="Pedro Martins Falleiros"/>
+            <img src={teatcher.avatar} alt={teatcher.name}/>
             <div>
-                <strong>Pedro Martins Falleiros</strong>
-                <span>Cálculo</span>
+                <strong>{teatcher.name}</strong>
+                <span>{teatcher.subject}</span>
             </div>
         </header>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.  <br/> Aperiam quae fugiat officiis modi. Tempora omnis repudiandae consequatur quia voluptatum at recusandae. Accusamus, explicabo tempore laborum consectetur magni quaerat repudiandae quisquam.</p>
+        <p>{teatcher.bio}</p>
         <footer>
-            <p>Preço por hora <strong>R$20,00</strong></p>
-            <button type="button">
+            <p>Preço por hora <strong>R${teatcher.cost}</strong></p>
+            <a 
+                target="_blank"
+                href={`https://wa.me/${teatcher.whatsapp}`}
+                onClick={createNewConnection}>
                 <img src={whatsappIcon} alt="whatsapp"/>
                 Entrar em contato
-            </button>
+            </a>
         </footer>
     </article>
     );
