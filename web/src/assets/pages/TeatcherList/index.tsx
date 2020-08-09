@@ -28,7 +28,7 @@ function TeatcherList (){
         <div id="page-teatcher-list" className="container">
             <PageHeader title="Esses são os proffys disponíveis.">
                 <form id="search-teatchers" onSubmit={searchTeatchers}>
-                <Select 
+                    <Select 
                         name="subject" 
                         label="Matéria" 
                         value={subject}
@@ -44,7 +44,8 @@ function TeatcherList (){
                             {value: 'Física', label:'Física'},
                             {value: 'Química', label:'Química'},
                             {value: 'Educação Física', label:'Educação Física'}
-                        ]} />
+                        ]} 
+                    />
                     <Select 
                         name="week_day" 
                         label="Dia da semana" 
@@ -58,7 +59,8 @@ function TeatcherList (){
                             {value: '4', label:'Quinta-feira'},
                             {value: '5', label:'Sexta-feira'},
                             {value: '6', label:'Sábado'}
-                        ]} />
+                        ]} 
+                    />
                     <Input 
                         name="time" 
                         label="Horário" 

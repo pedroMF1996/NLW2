@@ -42,12 +42,12 @@
         max-width: 100%;
     }
 
-    #search-teachers{
+#search-teatchers{
         display:grid;
         grid-template-columns: repeat(4, 1fr) ;
         column-gap: 16px;
-        position: absolute;
-        bottom: -28px;
+        /* position: absolute; */
+        margin-bottom: -28px;
     }
 
     #search-teatchers .input-block + .input-block,
